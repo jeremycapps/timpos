@@ -1,0 +1,30 @@
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+
+# Runtime / generated outputs
+.timpos/
+*.candidate.yaml
+*.candidate.yml
+retrieval_results.json
+retrieval_trace.json
+replay_output.json
+diff_output.json
+
+# Temp files
+tmp/
+temp/
+local_sources/
+
+# Python, only if local validation scripts are later added
+__pycache__/
+.pytest_cache/
+.venv/
