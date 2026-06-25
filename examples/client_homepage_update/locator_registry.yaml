@@ -1,0 +1,80 @@
+locator_registry:
+  version: 1.0.0
+
+  locator_shape:
+    canonical_template: "{client}.{domain}://locate?scope={scope}&resource={resource}&selector={selector}"
+    typed_path:
+      segment_format: "{type}:{id}"
+      separator: "/"
+    typed_segment:
+      format: "{type}:{id}"
+
+  systems:
+    monday:
+      scope_pattern:
+        - board
+      resources:
+        item:
+          selectors:
+            - column
+            - update
+            - full
+
+    jira:
+      scope_pattern:
+        - project
+      resources:
+        issue:
+          selectors:
+            - field
+            - comment
+            - attachment
+            - full
+
+    notion:
+      scope_pattern:
+        - workspace
+        - database
+      resources:
+        page:
+          selectors:
+            - property
+            - block
+            - comment
+            - full
+
+    s3:
+      scope_pattern:
+        - bucket
+        - region
+      resources:
+        object:
+          selectors:
+            - version
+            - byte_range
+            - full
+
+    github:
+      scope_pattern:
+        - owner
+        - repo
+      resources:
+        file:
+          selectors:
+            - full
+            - line_range
+        pull_request:
+          selectors:
+            - full
+            - comment
+            - file
+
+    local_file:
+      scope_pattern:
+        - root
+      resources:
+        file:
+          selectors:
+            - full
+            - line_range
+            - byte_range
