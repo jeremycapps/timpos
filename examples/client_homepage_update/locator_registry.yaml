@@ -9,7 +9,7 @@ locator_registry:
     typed_segment:
       format: "{type}:{id}"
 
-  systems:
+  domains:
     monday:
       scope_pattern:
         - board
