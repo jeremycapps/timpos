@@ -3,7 +3,7 @@ version: 1.0.0
 status: v1
 
 summary: >
-  Defines the locator grammar for source systems. The registry gives meaning
+  Defines the locator grammar for source domains. The registry gives meaning
   to Timpos locator strings used in timpo.p.
 
 required_root_key: locator_registry
@@ -12,7 +12,7 @@ locator_registry:
   required:
     - version
     - locator_shape
-    - systems
+    - domains
   fields:
     version:
       type: string
@@ -20,7 +20,7 @@ locator_registry:
     locator_shape:
       type: map
       required: true
-    systems:
+    domains:
       type: map
       required: true
 
@@ -32,7 +32,7 @@ locator_shape:
       description: Enterprise, workspace, customer, or user namespace.
     domain:
       type: string
-      description: Source system such as monday, jira, notion, s3, github, or local_file.
+      description: Source domain such as monday, jira, notion, s3, github, or local_file.
     scope:
       type: typed_path
       description: Typed namespace path inside the client/domain.
@@ -58,5 +58,5 @@ rules:
   - Resource is a single typed segment.
   - Selector is a single typed segment.
   - IDs containing reserved URI characters must be percent-encoded.
-  - The registry validates locator grammar.
+  - The registry validates domain locator grammar.
   - Timpo stores the locator directly in p.
