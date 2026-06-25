@@ -1,0 +1,20 @@
+timpos:
+  - id: timpo.001
+    t: 2026-06-24T15:42:00-04:00
+    p: acme.monday://locate?scope=board:123456&resource=item:7891011&selector=column:status
+
+  - id: timpo.002
+    t: 2026-06-24T16:05:00-04:00
+    p: acme.local_file://locate?scope=root:repo&resource=file:examples%2Fclient_homepage_update%2Fsources%2Fclient-review.md&selector=line_range:1-12
+
+  - id: timpo.003
+    t: 2026-06-24T16:30:00-04:00
+    p: acme.jira://locate?scope=project:DESIGN&resource=issue:DESIGN-482&selector=field:status
+
+  - id: timpo.004
+    t: 2026-06-25T09:18:00-04:00
+    p: acme.notion://locate?scope=workspace:product/database:tasks&resource=page:page_update_hero_layout&selector=property:Status
+
+  - id: timpo.005
+    t: 2026-06-25T10:20:00-04:00
+    p: acme.s3://locate?scope=bucket:customer-exports/region:us-east-1&resource=object:gis%2Fclient-homepage%2Fexport.json&selector=version:3LgexampleVersion
