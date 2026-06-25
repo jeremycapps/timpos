@@ -1,0 +1,62 @@
+schema: timpos.locator_registry
+version: 1.0.0
+status: v1
+
+summary: >
+  Defines the locator grammar for source systems. The registry gives meaning
+  to Timpos locator strings used in timpo.p.
+
+required_root_key: locator_registry
+
+locator_registry:
+  required:
+    - version
+    - locator_shape
+    - systems
+  fields:
+    version:
+      type: string
+      required: true
+    locator_shape:
+      type: map
+      required: true
+    systems:
+      type: map
+      required: true
+
+locator_shape:
+  canonical_template: "{client}.{domain}://locate?scope={scope}&resource={resource}&selector={selector}"
+  fields:
+    client:
+      type: string
+      description: Enterprise, workspace, customer, or user namespace.
+    domain:
+      type: string
+      description: Source system such as monday, jira, notion, s3, github, or local_file.
+    scope:
+      type: typed_path
+      description: Typed namespace path inside the client/domain.
+    resource:
+      type: typed_segment
+      description: Typed primary object.
+    selector:
+      type: typed_segment
+      description: Typed fragment, field, range, version, or subpart.
+
+typed_path:
+  segment_format: "{type}:{id}"
+  separator: "/"
+
+typed_segment:
+  format: "{type}:{id}"
+
+rules:
+  - The URI scheme is "{client}.{domain}".
+  - The URI verb is always "locate".
+  - Scope, resource, and selector are query parameters.
+  - Scope may contain multiple typed segments.
+  - Resource is a single typed segment.
+  - Selector is a single typed segment.
+  - IDs containing reserved URI characters must be percent-encoded.
+  - The registry validates locator grammar.
+  - Timpo stores the locator directly in p.
