@@ -1,0 +1,36 @@
+schema: timpos.timpos
+version: 1.0.0
+status: v1
+
+summary: Defines Timpos. A Timpo binds time to a source locator.
+
+required_root_key: timpos
+
+timpos:
+  type: list
+  item_schema: timpo
+
+timpo:
+  required:
+    - id
+    - t
+    - p
+  fields:
+    id:
+      type: string
+      required: true
+      description: Stable id for this time-position observation.
+    t:
+      type: string
+      required: true
+      description: Observation time. Prefer ISO 8601.
+    p:
+      type: string
+      required: true
+      description: Canonical Timpos locator string.
+
+rules:
+  - Timpo says when and where.
+  - Timpo stores the locator directly.
+  - Timpo does not store source content.
+  - Timpo does not say what changed.
