@@ -1,0 +1,53 @@
+schema: timpos.moments
+version: 1.0.0
+status: v1
+
+summary: >
+  Defines Moments. A Moment records a value at a workstream path observed at a Timpo.
+
+required_root_key: moments
+
+moments:
+  type: list
+  item_schema: moment
+
+moment:
+  required:
+    - id
+    - workstream
+    - path
+    - value
+    - timpo
+    - previous
+  fields:
+    id:
+      type: string
+      required: true
+      description: Stable id for this path-value observation.
+    workstream:
+      type: string
+      required: true
+      description: Bounded context being versioned.
+    path:
+      type: string
+      required: true
+      description: State address inside the workstream.
+    value:
+      type: any
+      required: true
+      description: Observed value at the path.
+    timpo:
+      type: string
+      required: true
+      description: Timpo id for when and where this value was observed.
+    previous:
+      type:
+        - string
+        - null
+      required: true
+      description: Previous moment id for this path, or null for first observation.
+
+rules:
+  - Moment says what changed.
+  - Moment is workstream, path, value, timpo, and previous.
+  - Current state is derived by replaying moments.
